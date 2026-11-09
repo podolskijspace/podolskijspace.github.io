@@ -1,0 +1,15 @@
+.footer {
+    max-width: 760px;
+    margin: 40px auto 0;
+    text-align: center;
+    color: #65756b;
+    font-size: 13px;
+    line-height: 1.6;
+}
+.footer > span {
+    color: #6e8b72;
+    font-size: 30px;
+}
+.footer p {
+    margin: 12px 0 4px;
+}

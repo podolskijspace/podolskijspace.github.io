@@ -1,0 +1,42 @@
+/*TODO: Дублируется стиль*/
+.message {
+    padding: 48px 24px;
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    background: #ffffffa0;
+    color: #65756b;
+    line-height: 1.7;
+}
+.message h3 {
+    margin: 0 0 8px;
+    color: #203c30;
+    font-size: 22px;
+}
+.message p {
+    margin: 0 auto;
+    max-width: 480px;
+}
+.retry {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: 0;
+    border-radius: 10px;
+    background: #203c30;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+}
+.retry:focus-visible {
+    outline: 2px solid #527b62;
+    outline-offset: 3px;
+}
+@media (max-width: 600px) {
+    .message {
+        padding: 32px 20px;
+    }
+    .retry {
+        min-height: 44px;
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,99 @@
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+/*TODO: Дублируется стиль*/
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+}
+/*TODO: Дублируется стиль*/
+.movie {
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #ffffffd9;
+    border: 1px solid #fff;
+    box-shadow: 0 10px 30px -20px #344f3e40;
+}
+/*TODO: Дублируется стиль*/
+.skeleton {
+    background: linear-gradient(100deg, #dfe7df 25%, #eff3ec 50%, #dfe7df 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.6s linear infinite;
+}
+/*TODO: Дублируется стиль*/
+.poster {
+    position: relative;
+    aspect-ratio: 2 / 3;
+    background: linear-gradient(145deg, #dce6dc, #eae8dd);
+}
+.poster img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/*TODO: Дублируется стиль*/
+.movieBody {
+    padding: 18px;
+}
+.movieBody h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+    color: #203c30;
+    overflow-wrap: anywhere;
+    line-height: 1.4;
+}
+.movieBody p {
+    margin: 0 0 10px;
+    font-size: 12px;
+    color: #65756b;
+    line-height: 1.5;
+}
+.skeletonTitle {
+    height: 20px;
+    width: 80%;
+    border-radius: 5px;
+    margin-bottom: 12px;
+}
+.skeletonMeta {
+    height: 12px;
+    width: 55%;
+    border-radius: 4px;
+}
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+    }
+}
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+    .movieBody {
+        padding: 14px;
+    }
+}
+@media (max-width: 360px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .skeleton {
+        animation: none;
+    }
+}
+

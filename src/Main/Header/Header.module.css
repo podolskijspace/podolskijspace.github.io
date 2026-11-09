@@ -1,0 +1,37 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 28px 0;
+    border-bottom: 1px solid #203c3014;
+}
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #203c30;
+    font-size: 28px;
+    font-weight: 650;
+    letter-spacing: -0.06em;
+    text-decoration: none;
+}
+.brandDot {
+    color: #6e8b72;
+}
+.tagline {
+    color: #65756b;
+    font-size: 12px;
+}
+@media (max-width: 540px) {
+    .header {
+        padding: 20px 0;
+    }
+}
+@media (max-width: 360px) {
+    .header {
+        gap: 12px;
+    }
+}
