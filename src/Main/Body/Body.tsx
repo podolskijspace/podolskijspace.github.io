@@ -2,10 +2,20 @@ import { Loading } from "./Loading/Loading";
 import { Error } from "./Error/Error";
 import { Movie } from "./Movie/Movie";
 import s from "./Body.module.css";
+import { Button } from "@/components/Button/Button.tsx";
 
 export const Body = (props: any) => {
-  const { isPending, isError, data, onRetry, genres, genre, onPickGenre } =
-    props;
+  const {
+    isPending,
+    isError,
+    data,
+    onRetry,
+    genres,
+    genre,
+    onPickGenre,
+    withShowMoreBtn,
+    onShowMore,
+  } = props;
 
   return (
     <section
@@ -43,10 +53,17 @@ export const Body = (props: any) => {
       ) : isError ? (
         <Error onRetry={onRetry} />
       ) : data?.length ? (
-        <div className={s.grid}>
-          {data.map(({ show }) => (
-            <Movie show={show} />
-          ))}
+        <div>
+          <div className={s.grid}>
+            {data.map(({ show }) => (
+              <Movie show={show} />
+            ))}
+          </div>
+          {withShowMoreBtn && (
+            <div className={s.showMore}>
+              <Button onClick={onShowMore}>Show more</Button>
+            </div>
+          )}
         </div>
       ) : (
         <div className={s.message} role="status">

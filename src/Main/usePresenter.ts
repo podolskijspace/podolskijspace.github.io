@@ -4,18 +4,23 @@ import { useDebounce } from "use-debounce";
 
 export const usePresenter = () => {
   const [search, setSearch] = useState("");
-  const [debouncedValue] = useDebounce(search, 1000);
+  const [debouncedSearch] = useDebounce(search, 1000);
   const {
     data = [],
     isError,
     isLoading,
     isFetching,
     refetch,
-  } = useShows(debouncedValue);
-
+  } = useShows(debouncedSearch);
+  const handleRetry = () => void refetch();
   const hasSearch = search.trim().length > 0;
   const isPending =
-    hasSearch && (search !== debouncedValue || isLoading || isFetching);
+    hasSearch && (search !== debouncedSearch || isLoading || isFetching);
+
+  const [page, setPage] = useState(0);
+  const onShowMore = () => {
+    setPage((page) => page + 1);
+  };
 
   const [genre, setGenre] = useState("");
   const genres = useMemo(() => {
@@ -33,17 +38,23 @@ export const usePresenter = () => {
   const onPickGenre = (newGenre: string) => {
     if (genre === newGenre) setGenre("");
     else setGenre(newGenre);
+    setPage(0);
   };
   const onSearch = (search: string) => {
     setSearch(search);
     setGenre("");
+    setPage(0);
   };
-  const handleRetry = () => void refetch();
 
-  const filteredData = useMemo(() => {
-    if (!genre) return data;
-    return data.filter((movie) => movie.show.genres.includes(genre));
-  }, [data, genre]);
+  const [filteredData, withShowMoreBtn] = useMemo(() => {
+    let filteredData = data;
+    if (genre) {
+      filteredData = data.filter((movie) => movie.show.genres.includes(genre));
+    }
+    const filteredByPagination = filteredData.slice(0, 3 * (page + 1));
+    const withShowMoreBtn = filteredByPagination.length < filteredData.length;
+    return [filteredByPagination, withShowMoreBtn];
+  }, [data, genre, page]);
 
   return {
     hasSearch,
@@ -56,5 +67,7 @@ export const usePresenter = () => {
     isError,
     isPending,
     handleRetry,
+    withShowMoreBtn,
+    onShowMore,
   };
 };

@@ -58,6 +58,11 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 24px;
 }
+.showMore {
+    display: flex;
+    justify-content: center;
+    padding: 32px 16px 24px;
+}
 /*TODO: Дублируется стиль*/
 .message {
     padding: 48px 24px;
@@ -100,6 +105,9 @@
     }
     .message {
         padding: 32px 20px;
+    }
+    .showMore {
+        padding: 24px 12px 20px;
     }
 }
 @media (max-width: 360px) {

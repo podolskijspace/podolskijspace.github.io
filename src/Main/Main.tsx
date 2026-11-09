@@ -17,9 +17,10 @@ export const Main = () => {
     isError,
     isPending,
     handleRetry,
+    withShowMoreBtn,
+    onShowMore,
   } = usePresenter();
 
-  console.log(genres, "genres");
   return (
     <main className={s.page}>
       <Header />
@@ -33,6 +34,8 @@ export const Main = () => {
           isPending={isPending}
           onRetry={handleRetry}
           onPickGenre={onPickGenre}
+          withShowMoreBtn={withShowMoreBtn}
+          onShowMore={onShowMore}
         />
       )}
       <Footer />

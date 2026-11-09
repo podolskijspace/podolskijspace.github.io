@@ -1,7 +1,13 @@
 import { Input } from "@/components/Input/Input.tsx";
 import s from "./Search.module.css";
+import type { Dispatch } from "react";
 
-export const Search = ({ hasSearch, search, onSearch }: any) => {
+interface Props {
+  hasSearch: boolean;
+  search: string;
+  onSearch: Dispatch<string>;
+}
+export const Search = ({ hasSearch, search, onSearch }: Props) => {
   return (
     <section
       className={`${s.card} ${hasSearch ? s.compact : ""}`}

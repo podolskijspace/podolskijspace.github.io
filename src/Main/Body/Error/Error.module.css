@@ -19,24 +19,9 @@
 }
 .retry {
     margin-top: 20px;
-    padding: 12px 20px;
-    border: 0;
-    border-radius: 10px;
-    background: #203c30;
-    color: white;
-    font: inherit;
-    cursor: pointer;
-}
-.retry:focus-visible {
-    outline: 2px solid #527b62;
-    outline-offset: 3px;
 }
 @media (max-width: 600px) {
     .message {
         padding: 32px 20px;
-    }
-    .retry {
-        min-height: 44px;
-        max-width: 100%;
     }
 }
