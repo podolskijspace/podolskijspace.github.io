@@ -1,6 +1,10 @@
-import s from "./Movie.module.css";
+import s from "./MovieItem.module.css";
+import type { Movie } from "@/types/Movie.ts";
 
-export const Movie = ({ show }: any) => {
+interface Props {
+  show: Movie["show"];
+}
+export const MovieItem = ({ show }: Props) => {
   return (
     <article className={s.movie} key={show.id}>
       <a

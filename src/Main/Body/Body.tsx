@@ -1,14 +1,27 @@
 import { Loading } from "./Loading/Loading";
 import { Error } from "./Error/Error";
-import { Movie } from "./Movie/Movie";
 import s from "./Body.module.css";
-import { Button } from "@/components/Button/Button.tsx";
+import type { Movie } from "@/types/Movie.ts";
+import type { Dispatch, DispatchWithoutAction } from "react";
+import { Empty } from "./Empty/Empty.tsx";
+import { Movies } from "@/Main/Body/Movies/Movies.tsx";
 
-export const Body = (props: any) => {
+interface Props {
+  isPending: boolean;
+  isError: boolean;
+  movies: Movie[];
+  onRetry: DispatchWithoutAction;
+  genres: Movie.Genre[];
+  genre: Movie.Genre;
+  onPickGenre: Dispatch<Movie.Genre>;
+  withShowMoreBtn: Boolean;
+  onShowMore: DispatchWithoutAction;
+}
+export const Body = (props: Props) => {
   const {
     isPending,
     isError,
-    data,
+    movies,
     onRetry,
     genres,
     genre,
@@ -27,9 +40,9 @@ export const Body = (props: any) => {
         <h2 id="results-title">
           {isPending ? "Finding your story…" : "Search results"}
         </h2>
-        {!isPending && !isError && data && (
+        {!isPending && !isError && movies && (
           <span>
-            {data.length} {data.length === 1 ? "result" : "results"}
+            {movies.length} {movies.length === 1 ? "result" : "results"}
           </span>
         )}
       </div>
@@ -52,24 +65,14 @@ export const Body = (props: any) => {
         <Loading />
       ) : isError ? (
         <Error onRetry={onRetry} />
-      ) : data?.length ? (
-        <div>
-          <div className={s.grid}>
-            {data.map(({ show }) => (
-              <Movie show={show} />
-            ))}
-          </div>
-          {withShowMoreBtn && (
-            <div className={s.showMore}>
-              <Button onClick={onShowMore}>Show more</Button>
-            </div>
-          )}
-        </div>
+      ) : movies?.length ? (
+        <Movies
+          movies={movies}
+          onShowMore={onShowMore}
+          withShowMoreBtn={withShowMoreBtn}
+        />
       ) : (
-        <div className={s.message} role="status">
-          <h3>No results yet</h3>
-          <p>Try a different title or search for the original title.</p>
-        </div>
+        <Empty />
       )}
     </section>
   );

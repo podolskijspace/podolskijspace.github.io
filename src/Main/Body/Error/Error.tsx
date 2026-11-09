@@ -1,7 +1,11 @@
 import { Button } from "@/components/Button/Button.tsx";
 import s from "./Error.module.css";
+import type { DispatchWithoutAction } from "react";
 
-export const Error = ({ onRetry }: any) => {
+interface Props {
+  onRetry: DispatchWithoutAction;
+}
+export const Error = ({ onRetry }: Props) => {
   return (
     <div className={s.message} role="alert">
       <h3>Looks like the show was interrupted</h3>

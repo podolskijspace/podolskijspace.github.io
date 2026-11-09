@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import type { ShowResult } from "@/types/Show.ts";
+import type { Movie } from "@/types/Movie.ts";
 
 export const useShows = (param: string) => {
   const query = param.trim();
@@ -13,7 +13,7 @@ export const useShows = (param: string) => {
     return response.json();
   };
 
-  return useQuery<ShowResult[]>({
+  return useQuery<Movie[]>({
     queryFn,
     queryKey,
     enabled: query.length > 0,
