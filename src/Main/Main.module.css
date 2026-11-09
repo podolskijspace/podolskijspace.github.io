@@ -1,0 +1,33 @@
+.page {
+  box-sizing: border-box;
+  min-height: 100svh;
+  padding: 0 clamp(20px, 5vw, 72px) 32px;
+  background:
+    radial-gradient(ellipse at 15% 15%, #dce9df 0, transparent 50%),
+    radial-gradient(ellipse at 90% 85%, #ebe7da 0, transparent 45%), #f5f6f0;
+}
+
+
+@media (max-width: 540px) {
+  .tagline {
+    max-width: 130px;
+    text-align: right;
+    line-height: 1.5;
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+@media (max-width: 600px) {
+  .page {
+    padding-inline: 16px;
+  }
+}
+@media (max-width: 360px) {
+  .tagline {
+    max-width: 120px;
+  }
+}
