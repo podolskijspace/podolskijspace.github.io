@@ -25,13 +25,16 @@ export const usePresenter = () => {
   const [genre, setGenre] = useState("");
   const genres = useMemo(() => {
     if (!data?.length || isPending) return [];
-    const genresSet = data.reduce((previousValue, currentValue) => {
-      const genres = currentValue.show.genres;
-      genres.forEach((genre) => {
-        if (!previousValue.has(genre)) previousValue.add(genre);
-      });
-      return previousValue;
-    }, new Set());
+    const genresSet = data.reduce<Set<string>>(
+      (previousValue, currentValue) => {
+        const genres = currentValue.show.genres;
+        genres.forEach((genre) => {
+          if (!previousValue.has(genre)) previousValue.add(genre);
+        });
+        return previousValue;
+      },
+      new Set(),
+    );
     return Array.from(genresSet);
   }, [data, isPending]);
 

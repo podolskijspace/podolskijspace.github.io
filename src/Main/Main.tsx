@@ -27,7 +27,7 @@ export const Main = () => {
       <Search hasSearch={hasSearch} search={search} onSearch={onSearch} />
       {hasSearch && (
         <Body
-          data={filteredData}
+          movies={filteredData}
           genre={genre}
           genres={genres}
           isError={isError}
