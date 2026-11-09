@@ -11,11 +11,13 @@ export const Main = () => {
     setSearch,
     hasSearch,
     data,
+    filters,
     isError,
     isPending,
     handleRetry,
   } = usePresenter();
 
+  console.log(filters, "genres");
   return (
     <main className={s.page}>
       <Header />
