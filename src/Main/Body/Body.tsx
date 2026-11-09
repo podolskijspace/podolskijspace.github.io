@@ -4,7 +4,8 @@ import { Movie } from "./Movie/Movie";
 import s from "./Body.module.css";
 
 export const Body = (props: any) => {
-  const { isPending, isError, data, onRetry } = props;
+  const { isPending, isError, data, onRetry, genres, genre, onPickGenre } =
+    props;
 
   return (
     <section
@@ -14,12 +15,29 @@ export const Body = (props: any) => {
     >
       <div className={s.resultsHeader}>
         <h2 id="results-title">
-          {isPending ? "Ищем вашу историю…" : "Результаты поиска"}
+          {isPending ? "Finding your story…" : "Search results"}
         </h2>
         {!isPending && !isError && data && (
-          <span>{data.length} в подборке</span>
+          <span>
+            {data.length} {data.length === 1 ? "result" : "results"}
+          </span>
         )}
       </div>
+      {genres.length > 0 && (
+        <div className={s.genres} role="group" aria-label="Genres">
+          {genres.map((currGenre) => (
+            <button
+              key={currGenre}
+              type="button"
+              className={`${s.genreBadge} ${currGenre === genre ? s.genreBadgeActive : ""}`}
+              aria-pressed={currGenre === genre}
+              onClick={() => onPickGenre(currGenre)}
+            >
+              {currGenre}
+            </button>
+          ))}
+        </div>
+      )}
       {isPending ? (
         <Loading />
       ) : isError ? (
@@ -32,8 +50,8 @@ export const Body = (props: any) => {
         </div>
       ) : (
         <div className={s.message} role="status">
-          <h3>Пока ничего не нашлось</h3>
-          <p>Попробуйте другое название или название на языке оригинала.</p>
+          <h3>No results yet</h3>
+          <p>Try a different title or search for the original title.</p>
         </div>
       )}
     </section>

@@ -21,6 +21,37 @@
 .resultsHeader > span {
     font-size: 13px;
 }
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+.genreBadge {
+    padding: 8px 14px;
+    border: 1px solid #d4e0d4;
+    border-radius: 999px;
+    background: #eaf0e9;
+    color: #4f7057;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.genreBadge:hover {
+    border-color: #4f7057;
+    background: #dce8da;
+}
+.genreBadgeActive,
+.genreBadgeActive:hover {
+    border-color: #203c30;
+    background: #203c30;
+    color: #fff;
+}
+.genreBadge:focus-visible {
+    outline: 2px solid #4f7057;
+    outline-offset: 3px;
+}
 /*TODO: Дублируется стиль*/
 .grid {
     display: grid;

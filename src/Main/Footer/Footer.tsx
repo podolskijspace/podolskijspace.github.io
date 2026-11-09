@@ -4,8 +4,8 @@ export const Footer = () => {
   return (
     <footer className={s.footer}>
       <span aria-hidden="true">✳</span>
-      <p>Большие истории начинаются с любопытства.</p>
-      <small>А попкорн — по желанию.</small>
+      <p>Great stories start with curiosity.</p>
+      <small>Popcorn is optional.</small>
     </footer>
   );
 };

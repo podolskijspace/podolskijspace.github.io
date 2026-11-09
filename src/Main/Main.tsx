@@ -8,26 +8,31 @@ import { usePresenter } from "./usePresenter.ts";
 export const Main = () => {
   const {
     search,
-    setSearch,
+    onSearch,
     hasSearch,
-    data,
-    filters,
+    filteredData,
+    genre,
+    onPickGenre,
+    genres,
     isError,
     isPending,
     handleRetry,
   } = usePresenter();
 
-  console.log(filters, "genres");
+  console.log(genres, "genres");
   return (
     <main className={s.page}>
       <Header />
-      <Search hasSearch={hasSearch} search={search} setSearch={setSearch} />
+      <Search hasSearch={hasSearch} search={search} onSearch={onSearch} />
       {hasSearch && (
         <Body
-          data={data}
+          data={filteredData}
+          genre={genre}
+          genres={genres}
           isError={isError}
           isPending={isPending}
           onRetry={handleRetry}
+          onPickGenre={onPickGenre}
         />
       )}
       <Footer />

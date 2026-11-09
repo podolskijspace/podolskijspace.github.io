@@ -1,34 +1,29 @@
 import { Input } from "@/components/Input/Input.tsx";
 import s from "./Search.module.css";
 
-export const Search = ({ hasSearch, search, setSearch }: any) => {
+export const Search = ({ hasSearch, search, onSearch }: any) => {
   return (
     <section
       className={`${s.card} ${hasSearch ? s.compact : ""}`}
       aria-labelledby="search-title"
     >
-      <div className={s.badge}>Ваш следующий киносеанс</div>
+      <div className={s.badge}>Your next movie night</div>
       <h1 className={s.title} id="search-title">
-        Найдите кино.
-        <br /> Останьтесь ради истории.
+        Find a film.
+        <br /> Stay for the story.
       </h1>
       <p className={s.description}>
-        Любимый фильм или новое открытие — начните с названия.
+        An old favorite or a new discovery — start with a title.
       </p>
       <Input
-        label="Название фильма или сериала"
+        label="Movie or TV show title"
         type="search"
         name="search"
-        placeholder="Например, Интерстеллар"
+        placeholder="For example, Interstellar"
         value={search}
-        onChange={(e) => {
-          const value = e.target.value;
-          setSearch(value);
-        }}
+        onChange={(e) => onSearch(e.target.value)}
       />
-      <p className={s.hint}>
-        Одна строка — и вы на шаг ближе к хорошему вечеру.
-      </p>
+      <p className={s.hint}>One search brings you closer to a great evening.</p>
     </section>
   );
 };

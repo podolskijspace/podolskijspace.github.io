@@ -5,7 +5,7 @@ export const Loading = () => {
   return (
     <Fragment>
       <p className={s.srOnly} role="status">
-        Загружаем результаты поиска
+        Loading search results
       </p>
       <div className={s.grid} aria-hidden="true">
         {Array.from({ length: 8 }, (_, index) => (

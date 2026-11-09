@@ -9,7 +9,7 @@ export const useShows = (param: string) => {
       `https://api.tvmaze.com/search/shows?q=${encodeURIComponent(query)}`,
       { signal },
     );
-    if (!response.ok) throw new Error(`Ошибка запроса: ${response.status}`);
+    if (!response.ok) throw new Error(`Request failed: ${response.status}`);
     return response.json();
   };
 

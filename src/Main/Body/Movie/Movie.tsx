@@ -10,7 +10,7 @@ export const Movie = ({ show }: any) => {
         rel="noreferrer"
       >
         <div className={s.poster}>
-          <span className={s.noPoster}>Постер пока за кадром</span>
+          <span className={s.noPoster}>Poster still behind the scenes</span>
           {show.image?.medium && (
             <img
               src={show.image.medium}
@@ -24,7 +24,7 @@ export const Movie = ({ show }: any) => {
           {show.rating?.average != null && (
             <span
               className={s.rating}
-              aria-label={`Рейтинг ${show.rating.average} из 10`}
+              aria-label={`Rated ${show.rating.average} out of 10`}
             >
               ★ {show.rating.average.toFixed(1)}
             </span>
@@ -35,12 +35,12 @@ export const Movie = ({ show }: any) => {
           <p>
             {[show.premiered?.slice(0, 4), show.language]
               .filter(Boolean)
-              .join(" · ") || "Детали скоро появятся"}
+              .join(" · ") || "Details coming soon"}
           </p>
           <span className={s.genres}>
-            {show.genres.slice(0, 2).join(" / ") || "Без жанра"}
+            {show.genres.slice(0, 2).join(" / ") || "Genre unavailable"}
           </span>
-          <span className={s.details}>Подробнее на TVmaze ↗</span>
+          <span className={s.details}>More on TVmaze ↗</span>
         </div>
       </a>
     </article>
