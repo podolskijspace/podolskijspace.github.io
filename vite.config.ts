@@ -7,7 +7,10 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: [
-      { find: /^@\//, replacement: `${path.resolve(import.meta.dirname, "src")}/` },
+      {
+        find: /^@\//,
+        replacement: `${path.resolve(import.meta.dirname, "src")}/`,
+      },
     ],
   },
 });
